@@ -131,7 +131,7 @@ impl LanceStore {
     /// text that must leave the disk (secrets purged or redacted), unlike
     /// [`Self::compact`], whose prune keeps an hour of versions.
     pub async fn purge_history(&self) -> Result<()> {
-        use lancedb::table::{CompactionOptions, Duration as LanceDuration};
+        use lancedb::table::{CompactionOptions, Duration as LanceDuration, OptimizeAction};
         let table = self
             .db
             .open_table(&self.table_name)
